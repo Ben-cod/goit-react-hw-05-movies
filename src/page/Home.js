@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getTrendinMovies } from '../components/FetchApi';
 import TrendingList from 'components/TrendingList/TrendingList';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(() => {
     getTrendinMovies().then(setTrendingMovies);
   }, []);
