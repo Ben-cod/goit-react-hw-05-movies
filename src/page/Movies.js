@@ -1,6 +1,7 @@
 import css from '../components/TrendingList/TrendingList.module.css';
 
 import { getSearchMovie } from 'components/FetchApi';
+import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
@@ -9,10 +10,18 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams('');
   const location = useLocation();
-
+  const [loading, setLoading] = useState(false);
   const serchQuery = searchParams.get('query');
   useEffect(() => {
-    serchQuery && getSearchMovie(serchQuery).then(setMovies);
+    if (serchQuery) {
+      setLoading(true);
+      serchQuery &&
+        getSearchMovie(serchQuery)
+          .then(setMovies)
+          .finally(() => {
+            setLoading(false);
+          });
+    }
   }, [serchQuery]);
 
   const handleSubmit = async e => {
@@ -28,7 +37,7 @@ const Movies = () => {
     setQuery(e.target.value);
   };
   return (
-    <div>
+    <>
       <div className={css.searchbar}>
         <form className={css.form} onSubmit={handleSubmit}>
           <button type="submit" className={css.button}>
@@ -47,23 +56,29 @@ const Movies = () => {
           />
         </form>
       </div>
-      {movies.length > 0 && (
-        <ul className={css.gallery}>
-          {movies.map(({ id, title, poster }) => (
-            <Link to={`/movies/${id}`} state={{ from: location }}>
+      <div className={css.container}></div>
+      {loading ? (
+        <Loader />
+      ) : (
+        movies.length > 0 && (
+          <ul className={css.gallery}>
+            {movies.map(({ id, title, poster }) => (
               <li className={css.galleryItem} key={id}>
-                <img
-                  className={css.galleryItem_image}
-                  src={poster}
-                  alt={title}
-                />
-                <h3>{title}</h3>
+                <Link to={`/movies/${id}`} state={{ from: location }}>
+                  <img
+                    className={css.galleryItem_image}
+                    src={poster}
+                    alt={title}
+                  />
+
+                  <h3 className={css.title}>{title}</h3>
+                </Link>
               </li>
-            </Link>
-          ))}
-        </ul>
+            ))}
+          </ul>
+        )
       )}
-    </div>
+    </>
   );
 };
 

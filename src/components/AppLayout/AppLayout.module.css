@@ -1,1 +1,49 @@
+.nav_list {
+  display: flex;
+  padding: 20px;
+  /* margin-bottom: 30px; */
+  background-image: linear-gradient(to right, red 20%, black 60%);
+  /* Ви можете змінити кольори та співвідношення в градієнті */
+}
 
+.nav_item {
+  font-size: 30px;
+  font-weight: 700;
+  margin-right: 30px;
+  color: white; /* Змініть колір тексту, щоб він був видимий на градієнтному фоні */
+}
+
+.nav_item:hover,
+.nav_item:focus,
+.nav_item:active {
+  color: black;
+}
+
+.footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, red 20%, black 60%);
+  /* Той самий градієнт, як і в nav */
+}
+
+/* Інші стилі для вашого футера */
+.container {
+  min-height: 100vh; /* Мінімальна висота контейнера на весь вигляд екрану */
+  position: relative; /* Зробіть контейнер relative */
+}
+
+.footer {
+  position: fixed; /* Зробіть футер абсолютним */
+  bottom: 0; /* Прикріпіть його до нижньої частини контейнера */
+  left: 0;
+  right: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-image: linear-gradient(to right, red 20%, black 60%);
+  /* Інші стилі для вашого футера */
+}

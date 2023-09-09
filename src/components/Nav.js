@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+import css from './AppLayout/AppLayout.module.css';
 export const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+    <nav className={css.nav}>
+      <ul className={css.nav_list}>
+        <li className={css.nav_item}>
+          <NavLink to="/">Home</NavLink>
         </li>
-        <li>
-          <Link to="movies">Movies</Link>
+        <li className={css.nav_item}>
+          <NavLink to="movies">Movies</NavLink>
         </li>
       </ul>
     </nav>

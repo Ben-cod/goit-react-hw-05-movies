@@ -1,0 +1,29 @@
+.title_Trend {
+  padding: 20px;
+}
+.detalis_wrap {
+  display: flex;
+  /* background-color: white; */
+}
+.detalis_info {
+  margin-left: 15px;
+}
+.button {
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+  margin: 15px;
+}
+.voice_list {
+  display: flex;
+  flex-direction: column;
+}
+.voice_item {
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+  margin-bottom: 10px;
+  background-color: brown;
+  padding: 5px;
+  border-bottom: 2px;
+  border-radius: 5px;
+}
