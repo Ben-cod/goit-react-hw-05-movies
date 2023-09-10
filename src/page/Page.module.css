@@ -3,7 +3,6 @@
 }
 .detalis_wrap {
   display: flex;
-  /* background-color: white; */
 }
 .detalis_info {
   margin-left: 15px;
@@ -15,15 +14,18 @@
 }
 .voice_list {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
+
 .voice_item {
   justify-content: center;
   text-align: center;
   width: 100px;
+  margin-top: 15px;
+  margin-right: 15px;
   margin-bottom: 10px;
   background-color: brown;
-  padding: 5px;
+  padding: 10px;
   border-bottom: 2px;
   border-radius: 5px;
 }

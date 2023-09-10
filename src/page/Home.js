@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getTrendinMovies } from '../components/FetchApi';
-import TrendingList from 'components/TrendingList/TrendingList';
+
 import css from './Page.module.css';
-// import { useLocation } from 'react-router-dom';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
-  // const location = useLocation();
   useEffect(() => {
     getTrendinMovies().then(setTrendingMovies);
   }, []);
@@ -15,7 +14,7 @@ const Home = () => {
   return (
     <main>
       <h1 className={css.title_Trend}>Trending today</h1>
-      <TrendingList trendingMovies={trendingMovies} />
+      <MoviesList trendingMovies={trendingMovies} />
     </main>
   );
 };

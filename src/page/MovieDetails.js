@@ -14,9 +14,10 @@ const MovieDetalis = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const backLink = location.state?.from ?? '/movies';
 
+  const backLink = location.state?.from ?? '/movies';
   const { title, overview, userScore, genres, release, poster } = movie ?? {};
+
   useEffect(() => {
     getMovieDetails(movieId).then(setMovie);
   }, [movieId]);
@@ -57,16 +58,23 @@ const MovieDetalis = () => {
             </div>
             <h3>Additional information</h3>
             <ul className={css.voice_list}>
-              <li className={css.voice_item}>
-                <Link to={'cast'} state={{ from: location?.state?.from }}>
-                  Cast
-                </Link>
-              </li>
-              <li className={css.voice_item}>
-                <Link to={'reviews'} state={{ from: location?.state?.from }}>
-                  Reviews
-                </Link>
-              </li>
+              <Link
+                className={css.voice_item}
+                to={'cast'}
+                state={{ from: location?.state?.from }}
+              >
+                Cast
+                <li className={css.voice_wrap}></li>
+              </Link>
+
+              <Link
+                className={css.voice_item}
+                to={'reviews'}
+                state={{ from: location?.state?.from }}
+              >
+                Reviews
+                <li className={css.voice_wrap}></li>
+              </Link>
             </ul>
             <Suspense fallback={<Loader />}>
               <Outlet />
