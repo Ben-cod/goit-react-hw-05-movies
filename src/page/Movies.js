@@ -10,6 +10,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams('');
   const [loading, setLoading] = useState(false);
+
   const serchQuery = searchParams.get('query');
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const Movies = () => {
         setLoading(false);
       });
   }, [serchQuery]);
+
   const handleSearch = async query => {
     setLoading(true);
     const response = await getSearchMovie(query);
