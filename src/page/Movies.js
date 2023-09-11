@@ -26,11 +26,8 @@ const Movies = () => {
       });
   }, [serchQuery]);
 
-  const handleSearch = async query => {
-    setLoading(true);
-    const response = await getSearchMovie(query);
-    setMovies(response);
-    setLoading(false);
+  const handleSearch = query => {
+    setSearchParams({ query });
   };
 
   return (
